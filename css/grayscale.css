@@ -1,0 +1,328 @@
+/* Menu Bar Small */
+#mainNav {
+	/*&min-height: 32px;*/
+	background-color: #241251;
+}
+
+/* Menu Sandwich Icon */
+#mainNav .navbar-toggler {
+	font-size: 80%;
+	padding: 0.75rem;
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+}
+
+#mainNav .navbar-toggler:focus {
+	outline: none; /* This removes dotted square when clicked */
+}
+
+/* Menu Top Left Text */
+#mainNav .navbar-brand {
+	color: #FFFFFF;
+	font-weight: 700;
+	padding: .9rem 0;
+}
+
+/* Menu Item Hover */
+#mainNav .navbar-nav .nav-item:hover {
+	/*color: fade(#FF00FF, 80%);*/
+	outline: none;
+	/*background-color: rgba(36, 18, 81, 0.25);*/
+	/*transition: background-color 0.2s ease-in-out;*/
+}
+
+/* ??? */
+#mainNav .navbar-nav .nav-item:active,
+#mainNav .navbar-nav .nav-item:focus {
+	outline: none;
+	background-color: transparent;
+}
+
+/* Dynamic Transparent Bar */
+@media (min-width: 992px) {
+	#mainNav {
+		padding-top: 0;
+		padding-bottom: 0;
+		border-bottom: none;
+		background-color: transparent;
+		transition: background-color 1.0s ease-in-out;
+	}
+	/* Name */
+	#mainNav .navbar-brand {
+		padding: .5rem 0;
+		color: #FFFFFF;
+	}
+	#mainNav .navbar-brand:hover {
+		color: #545677;
+	}
+	#mainNav .nav-link {
+		transition: none;
+		/*padding: 2rem 1.5rem;*/
+		padding: 1.5rem 1.5rem 1.25rem;
+		color: #FFFFFF;
+	}
+	#mainNav .nav-link:hover {
+		color: #545677;
+	}
+	#mainNav .nav-link:active {
+		color: #FFFFFF;
+	}
+	#mainNav.navbar-shrink {
+		background-color: #241251FF;
+	}
+	#mainNav.navbar-shrink .navbar-brand {
+		color: #FFFFFF;
+	}
+	#mainNav.navbar-shrink .nav-link {
+		color: #545677;
+		padding: 1.5rem 1.5rem 1.25rem;
+		border-bottom: 0.25rem solid transparent;
+	}
+	#mainNav.navbar-shrink .nav-link:hover {
+		color: #FFFFFF;
+	}
+	#mainNav.navbar-shrink .nav-link:active {
+		color: #FFFFFF;
+	}
+	/* Highlight Rectangle */
+	#mainNav.navbar-shrink .nav-link.active {
+		color: #FFFFFF;
+		outline: none;
+		border-bottom: 0.25rem solid #453f78;
+	}
+}
+
+@font-face {
+	font-family: raleway;
+	src: url(../fonts/Raleway/Raleway-Regular.ttf) format("truetype");
+}
+
+@font-face {
+	font-family: raleway-thin;
+	src: url(../fonts/Raleway/Raleway-thin.ttf) format("truetype");
+}
+
+/* END COMMENTING */
+.masthead {
+	position: relative;
+	width: 100%;
+	height: auto;
+	min-height: 35rem;
+	padding: 15rem 0;
+	background: linear-gradient(to bottom, rgba(69, 63, 120, 0.5) 0%, rgba(69, 63, 120, 0.5) 100%), url("../img/bluesky_bw.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-size: cover;
+}
+
+.masthead h1 {
+	font-family: raleway;
+	font-size: 2rem;
+	line-height: 2.5rem;
+	letter-spacing: 0.8rem;
+	background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+
+.masthead h2 {
+	font-family: raleway;
+	max-width: 20rem;
+	font-size: 1.0rem;
+}
+
+@media (min-width: 768px) {
+	.masthead h1 {
+		font-family: raleway-thin;
+		font-size: 4rem;
+		line-height: 4rem;
+	}
+}
+
+@media (min-width: 992px) {
+	.masthead {
+		height: 100vh;
+		padding: 0;
+	}
+	.masthead h1 {
+		font-size: 6.5rem;
+		line-height: 6.5rem;
+		letter-spacing: 0.8rem;
+	}
+	.masthead h2 {
+		max-width: 40rem;
+		font-size: 1.5rem;
+	}
+}
+
+.btn {
+	box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+	padding: 1.25rem 2rem;
+	font-family: 'Varela Round';
+	font-size: 80%;
+	text-transform: uppercase;
+	letter-spacing: .15rem;
+	border: 0;
+}
+
+.btn-primary {
+	background-color: #912f56;
+}
+
+.btn-primary:hover {
+	background-color: #1b1725;
+}
+
+.btn-primary:focus {
+	background-color: #241251;
+	color: white;
+}
+
+.btn-primary:active {
+	background-color: #545677 !important;
+}
+
+.about-section {
+	padding-top: 5rem;
+	/*background: linear-gradient(to bottom, #161616 0%, rgba(22, 00, 00, 1.0) 50%, rgba(27, 23, 37, 1.0) 100%);*/
+	background-color: #453f78;
+}
+
+.about-section p {
+	margin-bottom: 5rem;
+}
+
+.projects-section {
+	padding: 5rem 0;
+	background-color: #1b1725;
+}
+
+.projects-section .featured-text {
+	padding: 2rem;
+}
+
+@media (min-width: 992px) {
+	.projects-section .featured-text {
+		padding: 0 0 0 2rem;
+		border-left: 0.5rem solid #643296;
+	}
+}
+
+.projects-section .project-text {
+	padding: 3rem;
+	font-size: 90%;
+}
+
+@media (min-width: 992px) {
+	.projects-section .project-text {
+		padding: 5rem;
+	}
+	.projects-section .project-text hr {
+		border-color: #643296;
+		border-width: .25rem;
+		width: 30%;
+	}
+}
+
+.signup-section {
+	padding: 10rem 0;
+	/*background: linear-gradient(to bottom, rgba(27, 23, 37, 1.0) 0%, rgba(22, 22, 22, 0.5) 80%, #161616 100%), url("../img/beach.jpg");*/
+	background-color: #453f78;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-size: cover;
+}
+
+.signup-section .form-inline input {
+	box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+	padding: 1.25rem 2rem;
+	font-family: 'Varela Round';
+	font-size: 80%;
+	text-transform: uppercase;
+	letter-spacing: 0.15rem;
+	border: 0;
+}
+
+.contact-section {
+	padding: 5rem 0 0;
+}
+
+.contact-section .card {
+	border: 0;
+	border-bottom: 0.25rem solid #360C26;
+}
+
+.contact-section .card h4 {
+	font-size: 0.8rem;
+	font-family: 'Varela Round';
+	text-transform: uppercase;
+	letter-spacing: 0.15rem;
+}
+
+.contact-section .card hr {
+	border-color: #360C26;
+	border-width: 0.25rem;
+	width: 3rem;
+}
+
+.contact-section .social {
+	margin-top: 5rem;
+}
+
+.contact-section .social a {
+	text-align: center;
+	height: 3rem;
+	width: 3rem;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 100%;
+	line-height: 3rem;
+	color: rgba(255, 255, 255, 0.3);
+}
+
+.contact-section .social a:hover {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-section .social a:active {
+	color: #fff;
+}
+
+img.myimgclass {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family: 'Nunito';
+	letter-spacing: 0.0625em;
+}
+
+a {
+	color: #912f56;
+}
+
+a:focus,
+a:hover {
+	text-decoration: none;
+	color: #3c6360;
+}
+
+.bg-black {
+	background-color: #161616 !important;
+}
+
+.bg-primary {
+	background-color: #912f56 !important;
+}
+
+/* Icon Colors on Cards */
+.text-primary {
+	color: #000000 !important;
+}
+
+footer {
+	padding: 5rem 0;
+	height:50vh;
+}
