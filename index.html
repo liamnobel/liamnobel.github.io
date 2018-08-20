@@ -15,8 +15,36 @@
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 		<!-- Custom styles for this template -->
 		<link href="css/grayscale.css" rel="stylesheet">
+		<script>
+			function includeHTML() {
+			  var z, i, elmnt, file, xhttp;
+			  /*loop through a collection of all HTML elements:*/
+			  z = document.getElementsByTagName("*");
+			  for (i = 0; i < z.length; i++) {
+			    elmnt = z[i];
+			    /*search for elements with a certain atrribute:*/
+			    file = elmnt.getAttribute("w3-include-html");
+			    if (file) {
+			      /*make an HTTP request using the attribute value as the file name:*/
+			      xhttp = new XMLHttpRequest();
+			      xhttp.onreadystatechange = function() {
+			        if (this.readyState == 4) {
+			          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+			          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+			          /*remove the attribute, and call this function once more:*/
+			          elmnt.removeAttribute("w3-include-html");
+			          includeHTML();
+			        }
+			      }
+			      xhttp.open("GET", file, true);
+			      xhttp.send();
+			      /*exit the function:*/
+			      return;
+			    }
+			  }
+			};
+		</script>
 	</head>
-
 	<body id="page-top">
 		<!-- Navigation Bar -->
 		<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -64,258 +92,16 @@
 				</div>
 				<!--<div class="row justify-content-center">
 					<img src="img/face.png" class="img-fluid" alt="">
-				</div>-->
+					</div>-->
 			</div>
 		</section>
 		<!-- Projects Section -->
 		<section id="projects" class="projects-section">
 			<div class="container" style="background-color: #0F0D15">
-			<!-- Project One Row -->
-			<div class="text-center h-100 project">
-				<h2 class="text-white mb-4">Projects</h2>
-			</div>
-			<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-				<div class="col-lg-6" style="background-color: #14111B">
-					<div class="embed-responsive embed-responsive-4by3">
-						<a href="media/gasmask.webm">
-							<video class="gfy-thumbnail" width="auto" height="auto" autoplay loop>
-								<source src="media/gasmask.webm" type="video/webm">
-							</video>
-						</a>
-					</div>
+				<div class="text-center h-100 project">
+					<h2 class="text-white mb-4">Projects</h2>
 				</div>
-				<div class="col-lg-6">
-					<div class="text-center h-100 project">
-						<div class="d-flex h-100">
-							<div class="project-text w-100 my-auto text-center text-lg-left">
-								<h4 class="text-white">Misty</h4>
-								<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-								<hr class="d-none d-lg-block mb-0 ml-0">
-								<span style="display:block; height: 20px;"></span>
-								<div class="row justify-content-center">
-									<div class="col-3"> <img src="svg/icons-01.svg" alt="Dowload Source"> </div>
-									<div class="col-3"> <img src="svg/icons-02.svg" alt="Dowload Executable"> </div>
-									<div class="col-3"> <img src="svg/icons-06.svg" alt="Run With HTML5"> </div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Project Two Row -->
-				<div class="row justify-content-center no-gutters">
-					<div class="col-lg-6" style="background-color: #14111B">
-						<div class="embed-responsive embed-responsive-4by3">
-							<a href="media/quatlib.webm">
-								<video class="gfy-thumbnail" width="auto" height="auto" autoplay loop>
-									<source src="media/quatlib.webm" type="video/webm">
-								</video>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-6 order-lg-first">
-						<div class="text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-left">
-									<h4 class="text-white">Mountains</h4>
-									<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-									<hr class="d-none d-lg-block mb-0 ml-0">
-									<span style="display:block; height: 20px;"></span>
-									<div class="row justify-content-center">
-										<div class="col-3"> <img src="svg/icons-01.svg" alt="Dowload Source"> </div>
-										<div class="col-3"> <img src="svg/icons-02.svg" alt="Dowload Executable"> </div>
-										<div class="col-3"> <img src="svg/icons-03.svg" alt="Run With HTML5"> </div>
-									</div>
-									<span style="display:block; height: 20px;"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Project Three Row -->
-				<div class="row justify-content-center no-gutters">
-					<div class="col-lg-6" style="background-color: #110925">
-						<div class="embed-responsive embed-responsive-4by3">
-							<a href="media/shaderfun.webm">
-								<video class="gfy-thumbnail" width="auto" height="auto" autoplay loop>
-									<source src="media/shaderfun.webm" type="video/webm">
-								</video>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-6 <!--order-lg-first-->">
-						<div class="text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-left">
-									<h4 class="text-white">Mountains</h4>
-									<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-									<hr class="d-none d-lg-block mb-0 ml-0">
-									<span style="display:block; height: 20px;"></span>
-									<div class="row justify-content-center">
-										<div class="col-3"> <img src="svg/icons-01.svg" alt="Dowload Source"> </div>
-										<div class="col-3"> <img src="svg/icons-02.svg" alt="Dowload Executable"> </div>
-										<div class="col-3"> <img src="svg/icons-03.svg" alt="Run With HTML5"> </div>
-									</div>
-									<span style="display:block; height: 20px;"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Project Four Row -->
-				<div class="row justify-content-center no-gutters">
-					<div class="col-lg-6" style="background-color: #110925">
-						<div class="embed-responsive embed-responsive-4by3">
-							<a href="media/curveball.webm">
-								<video class="gfy-thumbnail" width="auto" height="auto" autoplay loop>
-									<source src="media/curveball.webm" type="video/webm">
-								</video>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-6 order-lg-first">
-						<div class="text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-left">
-									<h4 class="text-white">Mountains</h4>
-									<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-									<hr class="d-none d-lg-block mb-0 ml-0">
-									<span style="display:block; height: 20px;"></span>
-									<div class="row justify-content-center">
-										<div class="col-3"> <img src="svg/icons-01.svg" alt="Dowload Source"> </div>
-										<div class="col-3"> <img src="svg/icons-02.svg" alt="Dowload Executable"> </div>
-										<div class="col-3"> <img src="svg/icons-03.svg" alt="Run With HTML5"> </div>
-									</div>
-									<span style="display:block; height: 20px;"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Project Five Row -->
-				<div class="row justify-content-center no-gutters">
-					<div class="col-lg-6" style="background-color: #14111B">
-						<!--<img class="myimgclass" src="media/verlet.gif" alt="">-->
-						<div class="embed-responsive embed-responsive-4by3">
-							<a href="media/verlet.webm">
-								<video class="gfy-thumbnail" width="auto" height="auto" autoplay loop>
-									<source src="media/verlet.webm" type="video/webm">
-								</video>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-6 <!--order-lg-first-->">
-						<div class="text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-left">
-									<h4 class="text-white">Verlet Integration</h4>
-									<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-									<hr class="d-none d-lg-block mb-0 ml-0">
-									<span style="display:block; height: 20px;"></span>
-									<div class="row justify-content-center">
-										<div class="col-3"> <img src="svg/icons-01.svg" alt="Dowload Source"> </div>
-										<div class="col-3"> <img src="svg/icons-02.svg" alt="Dowload Executable"> </div>
-										<div class="col-3"> <img src="svg/icons-03.svg" alt="Run With HTML5"> </div>
-									</div>
-									<span style="display:block; height: 20px;"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Project 6 Row -->
-				<div class="row justify-content-center no-gutters">
-					<div class="col-lg-6">
-						<!--<img class="myimgclass" src="media/thehollow.gif" alt="">-->
-						<div class="embed-responsive embed-responsive-4by3">
-							<a href="media/thehollow.webm">
-								<video class="gfy-thumbnail" width="auto" height="auto" autoplay loop>
-									<source src="media/thehollow.webm" type="video/webm">
-								</video>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-6 order-lg-first">
-						<div class="text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-left">
-									<h4 class="text-white">Verlet Integration</h4>
-									<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-									<hr class="d-none d-lg-block mb-0 ml-0">
-									<span style="display:block; height: 20px;"></span>
-									<div class="row justify-content-center">
-										<div class="col-3"> <img src="svg/icons-01.svg" alt="Dowload Source"> </div>
-										<div class="col-3"> <img src="svg/icons-02.svg" alt="Dowload Executable"> </div>
-										<div class="col-3"> <img src="svg/icons-03.svg" alt="Run With HTML5"> </div>
-									</div>
-									<span style="display:block; height: 20px;"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Project 7 Row -->
-				<div class="row justify-content-center no-gutters">
-					<div class="col-lg-6" style="background-color: #14111B">
-						<!--<img class="myimgclass" src="media/starride.gif" alt="">-->
-						<div class="embed-responsive embed-responsive-4by3">
-							<a href="media/starride.webm">
-								<video class="gfy-thumbnail" width="auto" height="auto" autoplay loop>
-									<source src="media/starride.webm" type="video/webm">
-								</video>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-6 <!--order-lg-first-->">
-						<div class="text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-left">
-									<h4 class="text-white">StarRide</h4>
-									<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-									<hr class="d-none d-lg-block mb-0 ml-0">
-									<span style="display:block; height: 20px;"></span>
-									<div class="row justify-content-center">
-										<div class="col-3"> <img src="svg/icons-01.svg" alt="Dowload Source"> </div>
-										<div class="col-3"> <img src="svg/icons-02.svg" alt="Dowload Executable"> </div>
-										<div class="col-3"> <img src="svg/icons-03.svg" alt="Run With HTML5"> </div>
-									</div>
-									<span style="display:block; height: 20px;"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Project 8 Row -->
-				<div class="row justify-content-center no-gutters">
-					<div class="col-lg-6">
-						<!--<img class="myimgclass" src="media/wackybat.gif" alt="">-->
-						<div class="embed-responsive embed-responsive-4by3">
-							<a href="media/wackybat.webm">
-								<video class="gfy-thumbnail" width="auto" height="auto" autoplay loop>
-									<source src="media/wackybat.webm" type="video/webm">
-								</video>
-							</a>
-						</div>
-					</div>
-					<div class="col-lg-6 order-lg-first">
-						<div class="text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-left">
-									<h4 class="text-white">Verlet Integration</h4>
-									<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-									<hr class="d-none d-lg-block mb-0 ml-0">
-									<span style="display:block; height: 20px;"></span>
-									<div class="row justify-content-center">
-										<div class="col-3"> <img src="svg/icons-01.svg" alt="Dowload Source"> </div>
-										<div class="col-3"> <img src="svg/icons-02.svg" alt="Dowload Executable"> </div>
-										<div class="col-3"> <img src="svg/icons-03.svg" alt="Run With HTML5"> </div>
-									</div>
-									<span style="display:block; height: 20px;"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- END OF PROJECTS -->
+				<div w3-include-html="projects.html"></div>
 			</div>
 		</section>
 		<!-- Signup Section -->
@@ -394,5 +180,7 @@
 		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 		<!-- Custom scripts for this template -->
 		<script src="js/grayscale.min.js"></script>
+		<!-- Include scripts -->
+		<script>includeHTML();</script>
 	</body>
 </html>
