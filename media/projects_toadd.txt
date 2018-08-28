@@ -1,0 +1,51 @@
+Colored Text
+Crystal (Light Shader) (Maybe)
+Flawless Simple Platformer (Maybe)
+Lighting Maybe
+Lost (Buggy)
+Material Design (Maybe)
+Nimbus (From Johns Site)
+Piano (Maybe)
+PicToPal (Buggy)
+RocketRails (Johns Site)
+SalvageBlockEngine (Maybe)
+Slipstream (Maybe)
+SpaceShipGame
+StarMachine Full
+
+~~~~~~~~~~~~~~~~~~~~~~
+
+All john/liam games
+
+~~~~~~~~~~~~~~~~~~~~~~
+
+Auth Client (perhaps)
+- Bezier_1_2
+- Cardrifter
+Catenary (if finished)
+- CFD_TRY2 (need)
+- Climb (platformer engine)
+- CRT Shader
+- HexIslandGame
+LiveBG
+Noises (shader based)
+- PATHFINDING ON ISOGRID (need)
+- Pong (for freebie)
+PrintHTML (js extension)
+- Rig_Water (need) (botw type game 3d)
+- RPG (maybe pokemon like game)
+- SAT (need) (seperate axis collision)
+Snake (for freebie)
+- SwimFish
+VectorDraw (shader shapes)
+
+~~~~~~~~~~~~~~~~~
+Sprites (chemistry)
+
+ASAIG (as simple as it gets projects)
+
+~~~~~~~
+
+SmallWorld
+VHS Shader
+
