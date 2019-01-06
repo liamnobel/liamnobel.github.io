@@ -1,186 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<!-- Metadata -->
-		<meta charset="utf-8">
-		<meta name="description" content="Liam Nobel's Portfolio">
-		<meta name="keywords" content="GML,GameMaker,Coding,Portfolio,Liam,Nobel">
-		<meta name="author" content="Liam Nobel">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Liam Nobel - Github</title>
-		<!-- Bootstrap core CSS -->
-		<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<!-- Custom fonts for this template -->
-		<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-		<!-- Custom styles for this template -->
-		<link href="css/grayscale.css" rel="stylesheet">
-		<script>
-			function includeHTML() {
-			  var z, i, elmnt, file, xhttp;
-			  /*loop through a collection of all HTML elements:*/
-			  z = document.getElementsByTagName("*");
-			  for (i = 0; i < z.length; i++) {
-			    elmnt = z[i];
-			    /*search for elements with a certain atrribute:*/
-			    file = elmnt.getAttribute("w3-include-html");
-			    if (file) {
-			      /*make an HTTP request using the attribute value as the file name:*/
-			      xhttp = new XMLHttpRequest();
-			      xhttp.onreadystatechange = function() {
-			        if (this.readyState == 4) {
-			          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-			          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-			          /*remove the attribute, and call this function once more:*/
-			          elmnt.removeAttribute("w3-include-html");
-			          includeHTML();
-			        }
-			      }
-			      xhttp.open("GET", file, true);
-			      xhttp.send();
-			      /*exit the function:*/
-			      return;
-			    }
-			  }
-			};
-		</script>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">	
+		<title>Portfolio</title>
+		<!-- Link bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+		<!-- Custom css -->
+		<link rel="stylesheet" href="stylesheet.css">
+		<!-- HTML include function -->
+		<script src="include.js"></script>
+		<!-- Link jQuery for hoverplay function -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="hoverplay.js"></script>
 	</head>
-	<body id="page-top">
-		<!-- Navigation Bar -->
-		<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-			<div class="container">
-				<a class="navbar-brand js-scroll-trigger" href="#page-top">Liam Nobel</a>
-				<!-- Sandwich Icon -->
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fas fa-bars"></i>
+	<body style="background-color: #2A2C39">
+		<div class="container" style="background-color: #50495E">
+			<!-- NAVIGATION -->
+			<nav class="navbar sticky-top navbar-dark rounded-bottom navbar-expand-md" style="background-color: #6B6477">
+				<a class="navbar-brand" href="#">Liam Nobel</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #B6B3BB">
+					<span class="navbar-toggler-icon"</span>
 				</button>
-				<!-- Items -->
-				<div class="collapse navbar-collapse" id="navbarResponsive">
+				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="#about">About</a>
+							<a class="nav-link color-primary-1" href="#projects">Projects</a>
 						</li>
+						<!-- <li class="nav-item"> -->
+							<!-- <a class="nav-link color-primary-1" href="#games">Games</a> -->
+						<!-- </li> -->
+						<!-- <li class="nav-item"> -->
+							<!-- <a class="nav-link color-primary-1" href="#scripts">Scripts</a> -->
+						<!-- </li> -->
 						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
+							<a class="nav-link color-primary-1" href="#contact">Contact</a>
 						</li>
 					</ul>
 				</div>
+			</nav>
+			<!-- GAMES -->
+			<!-- <div class="row mt-4 ml-4 color-primary-1"> -->
+				<!-- <a id="games" class="anchor"></a> -->
+				<!-- <h1>Games</h1> -->
+			<!-- </div> -->
+			<!-- <div class="row" w3-include-html="games.html"></div> -->
+			<!-- PROJECTS -->
+			<div class="row mt-4 ml-4 color-primary-1">
+				<a id="projects" class="anchor"></a>
+				<h1>Projects</h1>
 			</div>
-		</nav>
-		<!-- Header -->
-		<header class="masthead">
-			<div class="container d-flex h-100 align-items-center">
-				<div class="mx-auto text-center">
-					<h1 class="mx-auto my-0">Liam Nobel</h1>
-					<h2 class="text-white-50 mx-auto mt-4 mb-5">Welcome to my digital portfolio!</h2>
-					<!--<a href="#about" class="btn btn-primary js-scroll-trigger">Press to Continue</a>-->
-					<!--<span style="display:block; height: 400px;"></span>-->
-				</div>
+			<div class="row" w3-include-html="projects.html"></div>
+			<!-- SCRIPTS -->
+			<!-- <div class="row mt-4 ml-4 color-primary-1"> -->
+				<!-- <a id="scripts" class="anchor"></a> -->
+				<!-- <h1>Scripts</h1> -->
+			<!-- </div> -->
+			<!-- <div class="row color-primary-1"> -->
+				<!-- <div class="col-12"> -->
+					<!-- <div class="card mt-3 shadow-sm color-primary-0" style="background-color: #FFFDF3"> -->
+						<!-- <div class="card-body p-3"> -->
+							<!-- <img class="align-self-center mr-3" src="img/test_wide.png" alt="Generic placeholder image"> -->
+							<!-- <h2>Script 1</h2> -->
+						<!-- </div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+			<!-- CONTACT -->
+			<a id="contact" class="anchor"></a>
+			<div class="row mt-4 ml-4 color-primary-1">
+				<h1>Contact</h1>
 			</div>
-		</header>
-		<!-- About Section -->
-		<section id="about" class="about-section text-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 mx-auto">
-						<h2 class="text-white mb-4">About</h2>
-						<p class="text-white-50">This is a site to display and share all the projects that I've worked on in the past.<br/>I, like many others, have a large accumulation of projects that have been left for dust.<br/>Hopefully, this site will allow others to learn something or be inspired.<br/>If nothing else, maybe someone can give me a few more ideas of what to work on next.</p>
-					</div>
-				</div>
-				<!--<div class="row justify-content-center">
-					<img src="img/face.png" class="img-fluid" alt="">
-					</div>-->
-			</div>
-		</section>
-		<!-- Projects Section -->
-		<section id="projects" class="projects-section">
-			<div class="container" style="background-color: #0F0D15">
-				<div class="text-center h-100 project">
-					<h2 class="text-white mb-4">Projects</h2>
-				</div>
-				<div w3-include-html="projects.html"></div>
-			</div>
-		</section>
-		<!-- Signup Section -->
-		<section id="signup" class="signup-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-lg-8 mx-auto text-center">
-						<i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-						<h2 class="text-white mb-5">Have any questions?<br/>Contact me!</h2>
-						<form class="form-inline d-flex">
-							<input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
-							<button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Contact Section -->
-		<section class="contact-section bg-black">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 mb-3 mb-md-0">
-						<div class="card py-4 h-100">
-							<div class="card-body text-center">
-								<i class="fas fa-map-marked-alt text-primary mb-2"></i>
-								<h4 class="text-uppercase m-0">Address</h4>
-								<hr class="my-4">
-								<div class="small text-black-50">101 Crawfords Corner Road, Holmdel, NJ 07733</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 mb-3 mb-md-0">
-						<div class="card py-4 h-100">
-							<div class="card-body text-center">
-								<i class="fas fa-envelope text-primary mb-2"></i>
-								<h4 class="text-uppercase m-0">Email</h4>
-								<hr class="my-4">
-								<div class="small text-black-50">
-									<a href="#"></a>
+			<div class="row color-primary-1">
+				<div class="col-xl-12">
+					<div class="mt-3 shadow-sm color-primary-1 rounded" style="background-color: #2E2939">
+							<div class = "row px-4 py-2">
+								<div class = "col my-2" style="background-color: #FFFFFF00">
+									<h2>Liam Nobel</h2>
+									<p class = "color-primary-2">Bachelors of Science Degree, Computer and Electrical Engineering</p>
+									<div class="d-flex justify-content-between my-2">
+										<a href="https://www.linkedin.com/in/liamnobel/" class="color-complement-0 p-2">Visit my LinkedIn</a>
+										<a href="mailto:liamnobel@gmail.com" class="color-complement-0 p-2">Email: liamnobel@gmail.com</a>
+									</div>
+									<p>Please feel free to contact me at any time!</p>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="col-md-4 mb-3 mb-md-0">
-						<div class="card py-4 h-100">
-							<div class="card-body text-center">
-								<i class="fas fa-mobile-alt text-primary mb-2"></i>
-								<h4 class="text-uppercase m-0">Phone</h4>
-								<hr class="my-4">
-								<div class="small text-black-50"></div>
-							</div>
-						</div>
 					</div>
 				</div>
-				<div class="social d-flex justify-content-center">
-					<a href="https://www.youtube.com/c/LiamNobel95" class="mx-2">
-					<i class="fab fa-youtube"></i>
-					</a>
-					<a href="https://github.com/liamnobel" class="mx-2">
-					<i class="fab fa-github"></i>
-					</a>
-				</div>
 			</div>
-		</section>
-		<!-- Footer -->
-		<footer class="bg-black small text-center text-white-50">
-			<div class="container">
-				Copyright &copy; Liam Nobel 2018
-			</div>
-		</footer>
-		<!-- Bootstrap core JavaScript -->
-		<script src="vendor/jquery/jquery.min.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<!-- Plugin JavaScript -->
-		<script src="vendor/font-awesome/js/all.js"></script>
-		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-		<!-- Custom scripts for this template -->
-		<script src="js/grayscale.min.js"></script>
-		<!-- Include scripts -->
-		<script>includeHTML();</script>
+			<p>Copyright © 2019 Liam Nobel</p>
+		</div>
+		<script>includeHTML();</script> 
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	</body>
 </html>
