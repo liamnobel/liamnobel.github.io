@@ -1,0 +1,202 @@
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../highlight/gml.css">
+    <script src="../highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+
+        function CopyToClipboard(containerid) {
+            if (document.selection) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(document.getElementById(containerid));
+                range.select().createTextRange();
+                document.execCommand("copy");
+
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                range.selectNode(document.getElementById(containerid));
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                if (window.getSelection) { window.getSelection().removeAllRanges(); }
+                else if (document.selection) { document.selection.empty(); }
+                unfade(document.getElementById("copied"));
+            }
+        }
+
+        function unfade(element) {
+            var op = 0.1;  // initial opacity
+            element.style.display = 'block';
+            var timer = setInterval(function () {
+                if (op >= 1) {
+                    clearInterval(timer);
+                    fade(element);
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op += op * 0.1;
+            }, 0);
+        }
+
+        function fade(element) {
+            var op = 1;  // initial opacity
+            var timer2 = setInterval(function () {
+                if (op <= 0.1) {
+                    clearInterval(timer2);
+                    element.style.display = 'none';
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op -= op * 0.1;
+            }, 100);
+        }
+
+    </script>
+    <style>
+        body {
+            background-color: #2C2C2C;
+        }
+
+        code {
+            border-radius: 4px;
+            border: 1px solid #353535;
+            margin: 12px;
+        }
+
+        div {
+            margin: auto;
+            width: 80%;
+            max-width: 1024px;
+        }
+
+        div.fixed {
+            text-align: center;
+            color: #FFFFFF;
+            background-color: #000000;
+            position: fixed;
+            bottom: 32px;
+            left: 0;
+            width: 100%;
+            display: none;
+        }
+
+        pre {
+            overflow-x: auto;
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        p,
+        h1 {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Visualizer</h1>
+
+        <p>Create Event</p>
+        <pre><code>gml_pragma("global","draw_enable_drawevent(false);");
+
+var n;
+
+r_in = array_create(4);
+n = 0;
+r_in[@n++] = 1;
+r_in[@n++] = 2;
+r_in[@n++] = 3;
+r_in[@n++] = 4;
+r_in[@n++] = 1;
+r_in[@n++] = 2;
+r_in[@n++] = 3;
+r_in[@n++] = 4;
+
+i_in = array_create(4);
+n = 0;
+i_in[@n++] = 0;
+i_in[@n++] = 0;
+i_in[@n++] = 0;
+i_in[@n++] = 5;
+i_in[@n++] = 5;
+i_in[@n++] = 0;
+i_in[@n++] = 0;
+i_in[@n++] = 0;
+
+r_out = array_create(4);
+i_out = array_create(4);
+
+show_debug_message(r_in);
+show_debug_message(i_in);
+
+array_fft(r_in,i_in,8);
+
+show_debug_message(r_in);
+show_debug_message(i_in);
+
+game_end();</code></pre>
+
+        <p>FFT Script</p>
+        <button type="button" class="btn btn-outline-light">Light</button>
+        <pre><code id="code_viz_fft" <!--onclick="CopyToClipboard('code_viz_fft')"-->/// array_fft(real_array,imaginary_array,size)
+
+var top_real = argument0;
+var top_imag = argument1;
+var n = argument2;
+var split = n/2;
+
+// break out
+if (n <= 1)
+    {
+    exit;
+    }
+
+// divide
+var even_real = array_create(n);
+var even_imag = array_create(n);
+var odd_real = array_create(n);
+var odd_imag = array_create(n);
+for (var i = 0; i < split; i++)
+    {
+    even_real[@i] = top_real[i*2];
+    odd_real [@i] = top_real[i*2+1];
+    even_imag[@i] = top_imag[i*2];
+    odd_imag [@i] = top_imag[i*2+1];
+    }
+
+// conquer
+array_fft(even_real,even_imag,split);
+array_fft(odd_real,odd_imag,split);
+
+// combine
+var mult = -2*pi/n;
+for (var k = 0; k < split; k++)
+    {
+    var angle = k*mult;
+    var part_real = cos(angle);
+    var part_imag = sin(angle);
+    var u = odd_real[k];
+    var v = odd_imag[k];
+    var t_real = part_real*u - part_imag*v;
+    var t_imag = part_real*v + part_imag*u;
+    top_real[@ k]       = even_real[k] + t_real;
+    top_imag[@ k]       = even_imag[k] + t_imag;
+    top_real[@ k+split] = even_real[k] - t_real;
+    top_imag[@ k+split] = even_imag[k] - t_imag;
+    }
+</code></pre>
+
+        <p>Output</p>
+        <pre><code class="plaintext">{ { 1,2,3,4,1,2,3,4 },  }
+{ { 0,0,0,5,5,0,0,0 },  }
+{ { 20,3.54,-9,3.54,-4,-3.54,1,-3.54 },  }
+{ { 10,-8.54,9,-1.46,0,-1.46,1,-8.54 },  }
+</code></pre>
+
+    </div>
+
+    <!--<div id="copied" class="fixed";>Text copied.</div>-->
+</body>

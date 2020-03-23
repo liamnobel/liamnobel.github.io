@@ -1,0 +1,237 @@
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../highlight/gml.css">
+    <script src="../highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+
+        function CopyToClipboard(containerid) {
+            if (document.selection) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(document.getElementById(containerid));
+                range.select().createTextRange();
+                document.execCommand("copy");
+
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                range.selectNode(document.getElementById(containerid));
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                if (window.getSelection) { window.getSelection().removeAllRanges(); }
+                else if (document.selection) { document.selection.empty(); }
+                unfade(document.getElementById("copied"));
+            }
+        }
+
+        function unfade(element) {
+            var op = 0.1;  // initial opacity
+            element.style.display = 'block';
+            var timer = setInterval(function () {
+                if (op >= 1) {
+                    clearInterval(timer);
+                    fade(element);
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op += op * 0.1;
+            }, 0);
+        }
+
+        function fade(element) {
+            var op = 1;  // initial opacity
+            var timer2 = setInterval(function () {
+                if (op <= 0.1) {
+                    clearInterval(timer2);
+                    element.style.display = 'none';
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op -= op * 0.1;
+            }, 100);
+        }
+
+    </script>
+    <style>
+        body {
+            background-color: #2C2C2C;
+        }
+
+        code {
+            border-radius: 4px;
+            border: 1px solid #353535;
+            margin: 12px;
+        }
+
+        div {
+            margin: auto;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        div.fixed {
+            text-align: center;
+            color: #FFFFFF;
+            background-color: #000000;
+            position: fixed;
+            bottom: 32px;
+            left: 0;
+            width: 100%;
+            display: none;
+        }
+
+        pre {
+            overflow-x: auto;
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+        }
+
+        p,
+        h1,
+        h3 {
+            color: #FFFFFF;
+        }
+
+
+        canvas {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>3D Plotting</h1>
+        <h3>Liam Nobel | 2020/03/23</h3>
+        <br>
+
+        <p>obj_control - create event</p>
+        <pre><code>// initialize display variables
+d3d_start();
+
+dir_pos = 0;
+dir_vel = 5;
+
+dist_pos = 512;
+dist_vel = 5;
+
+reso = 20;</code></pre>
+
+        <p>obj_control - draw event</p>
+        <pre><code>// take user movement
+var _input;
+
+dist_pos += dist_vel;
+dist_vel *= 0.95;
+_input = -keyboard_check(vk_up) + keyboard_check(vk_down);
+dist_vel += 0.1 * _input;
+
+dir_pos += dir_vel;
+dir_vel *= 0.95;
+_input = -keyboard_check(vk_left) + keyboard_check(vk_right);
+dir_vel += -0.1 * _input;
+
+reso += mouse_wheel_up() - mouse_wheel_down();
+
+// set projection for 3d
+d3d_set_projection_ext(lengthdir_x(dist_pos,dir_pos),lengthdir_y(dist_pos,dir_pos),128,0,0,0,0,0,1,120,view_wview[0]/view_hview[0],0.1,32000);
+
+// plot
+draw_set_colour(c_white);
+d3d_primitive_begin(pr_linelist);
+var _inc = 1.0/max(1.0,reso);
+for (var _j = 0.0; _j < 1.0; _j += _inc)
+    {
+    for (var _i = 0.0; _i < 1.0; _i += _inc)
+        {
+        var _i0 = _i - 0.5;
+        var _i1 = _i + _inc - 0.5;
+        var _j0 = _j - 0.5;
+        var _j1 = _j + _inc - 0.5;
+        
+        var _00 = f(_i0,_j0);
+        var _01 = f(_i1,_j0);
+        var _10 = f(_i0,_j1);
+        var _11 = f(_i1,_j1);
+        
+        d3d_vertex(_i0*512,_j0*512,_00*512);
+        d3d_vertex(_i1*512,_j0*512,_01*512);
+        
+        d3d_vertex(_i0*512,_j0*512,_00*512);
+        d3d_vertex(_i0*512,_j1*512,_10*512);
+        
+        if (_i == 1.0 - _inc)
+            {
+            d3d_vertex(_i1*512,_j0*512,_01*512);
+            d3d_vertex(_i1*512,_j1*512,_11*512);
+            }
+            
+        if (_j == 1.0 - _inc)
+            {
+            d3d_vertex(_i0*512,_j1*512,_10*512);
+            d3d_vertex(_i1*512,_j1*512,_11*512);
+            }
+        }
+    }
+d3d_primitive_end();
+
+// yz plane
+d3d_primitive_begin(pr_linestrip);
+d3d_vertex_colour(0,-256,-256,c_aqua,1.0);
+d3d_vertex_colour(0,+256,-256,c_aqua,1.0);
+d3d_vertex_colour(0,+256,+256,c_aqua,1.0);
+d3d_vertex_colour(0,-256,+256,c_aqua,1.0);
+d3d_vertex_colour(0,-256,-256,c_aqua,1.0);
+d3d_primitive_end();
+
+// xz plane
+d3d_primitive_begin(pr_linestrip);
+d3d_vertex_colour(-256,0,-256,c_fuchsia,1.0);
+d3d_vertex_colour(+256,0,-256,c_fuchsia,1.0);
+d3d_vertex_colour(+256,0,+256,c_fuchsia,1.0);
+d3d_vertex_colour(-256,0,+256,c_fuchsia,1.0);
+d3d_vertex_colour(-256,0,-256,c_fuchsia,1.0);
+d3d_primitive_end();
+
+// xy plane
+draw_set_colour(c_yellow);
+draw_rectangle(-256,-256,256,256,1);
+
+// draw axes
+d3d_primitive_begin(pr_linelist);
+d3d_vertex_colour(-256,0,0,c_red,1.0);
+d3d_vertex_colour(256,0,0,c_red,1.0);
+d3d_vertex_colour(0,-256,0,c_lime,1.0);
+d3d_vertex_colour(0,256,0,c_lime,1.0);
+d3d_vertex_colour(0,0,-256,c_blue,1.0);
+d3d_vertex_colour(0,0,256,c_blue,1.0);
+d3d_primitive_end();</code></pre>
+
+        <p>script - f(x,y)</p>
+        <pre><code id="code_viz_fft">/// f(x,y)
+        
+var _x = argument0;
+var _y = argument1;
+        
+// return z from arbitrary function
+return 0.5*(dsin(current_time/15)*0.5 + 0.5)*cos(8.0*_x - current_time/300)*sin(8.0*_y);</code></pre>
+
+        <p>example</p>
+
+        <div class="gm4html5_div_class" id="gm4html5_div_id">
+            <canvas id="canvas" width="512" height="512">
+                <p>Your browser doesn't support HTML5 canvas.</p>
+            </canvas>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/3dplot.js"></script>
+    <script>window.onload = GameMaker_Init;</script>
+</body>
